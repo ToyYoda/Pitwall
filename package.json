@@ -1,0 +1,16 @@
+{
+  "name": "pitwall",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "spike:telemetry": "pnpm --filter @pitwall/client run spike:telemetry"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.0",
+    "typescript": "^5.5.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "paths": {
+      "@pitwall/shared": ["../../packages/shared/src/index.ts"],
+      "@pitwall/shared/*": ["../../packages/shared/src/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}

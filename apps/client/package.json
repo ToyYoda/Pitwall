@@ -1,0 +1,21 @@
+{
+  "name": "@pitwall/client",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "spike:telemetry": "tsx src/spike/run.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "echo 'Electron build wired up in Phase 1'"
+  },
+  "dependencies": {
+    "@pitwall/shared": "workspace:*"
+  },
+  "optionalDependencies": {
+    "node-irsdk": "^0.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0"
+  }
+}
