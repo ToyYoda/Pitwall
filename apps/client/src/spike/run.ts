@@ -80,6 +80,14 @@ async function runReal(): Promise<void> {
   let lastFuelLevel: number | null = null;
   const lapFuelDeltas: number[] = [];
 
+  // Suppress "Missing converter for bitField: irsdk_PaceFlags" spam from node-irsdk.
+  // The patch script removes it at source; this catches any that slip through.
+  const _origLog = console.log.bind(console);
+  console.log = (...args: unknown[]) => {
+    if (typeof args[0] === 'string' && args[0].startsWith('Missing converter')) return;
+    _origLog(...args);
+  };
+
   console.log('  Initializing irsdk-node...');
   irsdkModule.init({ telemetryUpdateInterval: SAMPLE_RATE_MS, sessionInfoUpdateInterval: 5000 });
   const irsdk = irsdkModule.getInstance();
