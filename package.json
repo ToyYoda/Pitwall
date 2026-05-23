@@ -9,6 +9,9 @@
     "lint": "turbo run lint",
     "spike:telemetry": "pnpm --filter @pitwall/client run spike:telemetry"
   },
+  "engines": {
+    "node": ">=22"
+  },
   "devDependencies": {
     "turbo": "^2.3.0",
     "typescript": "^5.5.0"
