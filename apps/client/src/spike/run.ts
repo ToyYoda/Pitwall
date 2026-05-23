@@ -70,9 +70,9 @@ function printSample(s: RawSample): void {
 
 async function runReal(): Promise<void> {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const irsdk = require('node-irsdk') as {
+  const irsdkModule = require('node-irsdk') as {
     init: (opts: { telemetryUpdateInterval: number; sessionInfoUpdateInterval: number }) => void;
-    on: (event: string, cb: (...args: unknown[]) => void) => void;
+    getInstance: () => { on: (event: string, cb: (...args: unknown[]) => void) => void };
   };
 
   let sampleCount = 0;
@@ -81,7 +81,8 @@ async function runReal(): Promise<void> {
   const lapFuelDeltas: number[] = [];
 
   console.log('  Initializing irsdk-node...');
-  irsdk.init({ telemetryUpdateInterval: SAMPLE_RATE_MS, sessionInfoUpdateInterval: 5000 });
+  irsdkModule.init({ telemetryUpdateInterval: SAMPLE_RATE_MS, sessionInfoUpdateInterval: 5000 });
+  const irsdk = irsdkModule.getInstance();
 
   irsdk.on('Connected', () => console.log('  ✓ Connected to iRacing'));
   irsdk.on('Disconnected', () => console.log('  ✗ Disconnected from iRacing'));
